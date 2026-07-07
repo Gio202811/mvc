@@ -1,17 +1,5 @@
 <?php
 
-require_once '../lib/Route.php';
+require_once '../autoload.php';
 
-use Lib\Route;
-
-Route::get('/', function() {
-    echo 'hola dsde la pagina principal';
-});
-
-Route::get('/', function() {
-    echo 'hola dsde la pagina contacto';
-});
-
-Route::get('/', function() {
-    echo 'hola dsde la pagina acerca de';
-});
+require_once '../routes/web.php';
