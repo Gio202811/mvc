@@ -9,7 +9,7 @@
 <body>
     <h1>Hola desde la página home</h1>
 
-    <p>Titulo: <?php echo $title ?></p>
-    <p>Descripcion: <?php echo $description ?></p>
+    <p>Titulo <?php echo $title?></p>
+    <p>descripcion <?php echo $description?></p>
 </body>
 </html>

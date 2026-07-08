@@ -45,7 +45,7 @@ class Route
                 if(is_array($callback)){
                     $controller = new $callback[0];
 
-                    $response = $controller->{$callback[0]}(...$params);
+                    $response = $controller->{$callback[1]}(...$params);
                 }
 
 

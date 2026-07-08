@@ -2,10 +2,11 @@
 
 namespace App\Controllers;
 
-class Controller{
-    public function view($route, $data = []){
-
-        //Destructurar el array
+class Controller
+{
+    public function view($route, $data = [])
+    {
+        // Destructurar el array
         extract($data);
 
         $route = str_replace('.', '/', $route);
