@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use mysqli;
-
 class Contact extends Model
 {
-    protected $table = 'contact';
+    protected $table = 'contacts';
 }

@@ -54,4 +54,72 @@ class Model
         $sql = "SELECT *FROM {$this->table}";
         return $this->query($sql)->get();
     }
+
+    public function find($id)
+    {
+        //SELECT * FROM contacts WHERE id = 1
+        $sql = "SELECT * FROM {$this->table} WHERE id = {$id}";
+        return $this->query($sql)->first();
+    }
+
+    public function where($column, $operator, $value =null)
+    {
+        if($value == null){
+            $value = $operator;
+            $operator = "=";
+        }
+
+        //SELECT * FROM contacts WHERE name = 'Juan'
+        $sql = "SELECT * FROM {$this->table} WHERE {$column} {$operator} '{$value}'";
+        $this->query($sql);
+
+        return $this;
+    }
+
+    public function create($data){
+        //INSERT INTO contacts (name, email, phone) VALUES ('', '', '')
+        $columns = array_keys($data);
+        $columns = implode(', ', $columns);
+
+        $values = array_values($data);
+        $values = "'" . implode("', '", $values) . "'";
+
+        $sql = "INSERT INTO {$this->table} ({$columns}) VALUES ({$values})";
+
+        $this->query($sql);
+
+        $insert_id = $this->connection->insert_id;
+
+        return $this->find($insert_id);
+    }
+
+    public function update($id, $data){
+
+        //UPDATE contacts SET name = '', email = '', phone = '' WHERE id = 1
+
+        $fields = [];
+
+        foreach($data as $key => $value){
+
+            $fields[] = "{$key} = '{$value}'";
+
+        }
+
+        $fields = implode(',', $fields);
+
+        $sql = "UPDATE {$this->table} SET {$fields} WHERE id = {$id}";
+
+        $this->query($sql);
+
+        return $this->find($id);
+
+    }
+
+    public function delete($id)
+    {
+        // DELETE FROM contacts WHERE id = 1
+        $sql = "DELETE FROM {$this->table} WHERE id = {$id}";
+
+        $this->query($sql);
+    }
 }

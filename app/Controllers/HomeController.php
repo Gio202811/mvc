@@ -8,10 +8,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-
         $contactmodel = new Contact();
 
-        return $contactmodel->all();
+        $contactmodel->delete(1);
+
+        return "Eliminado";
 
         return $this->view('home', [
             'title' => 'Home',
