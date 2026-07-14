@@ -122,4 +122,5 @@ class Model
 
         $this->query($sql);
     }
+    
 }
